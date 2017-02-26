@@ -1,38 +1,51 @@
 $(document).ready(function(){
 
-    $("body").on("click", ".start", function(){	    
-		    $(".start").hide();
-		    showQuestion();
+
+    function startUpScreen() {
+    $('.start').html('<button type="button" class="btn btn-primary btn-block">START</button>');
+    audio.play();
+    }
+
+    startUpScreen();
+
+
+    $("body").on("click", ".start", function(event){
+            // console.log('start clicked');
+            audio.pause();
+            audio.currentTime = 0;
+		    generateQuestion();
 		    timer();
     });
 
-    $("body").on("click", ".start-over", function(){
-		    $(".start-over").hide();
+    $("body").on("click", ".start-over", function(event){
+            // console.log('restart clicked');
+            audio.pause();
+            audio.currentTime = 0;
 		    resetGame();
     });
     
     $("body").on("click", ".option", function(event){
 	answer = $(this).attr("id");
-	if( answer === triviaArray[questionCounter].answer) {
-		clearInterval(clock);
-		win();
-	}
-	else {
-		clearInterval(clock);
-		loss();
-	}
-	}); // Close .answer click
+    	if( answer === triviaArray[questionCounter].answer) 
+            {
+        		clearInterval(clock);
+        		win();
+        	}
+    	else 
+            {
+        		clearInterval(clock);
+        		loss();
+        	}
+	}); 
 
-}); //closing jquery operator
+}); //close
 
 function wait() {
-	if (questionCounter < 20) 
+	if (questionCounter < 2) 
 	{
-		console.log(questionCounter);
 		questionCounter++;
-		console.log(questionCounter);
-		counter = 20;
-		showQuestion();
+		generateQuestion();
+        counter = 20;
 		timer();
 	}
 	else {
@@ -41,14 +54,15 @@ function wait() {
 }
 
 function timer() {
-	clock = setInterval(thirtySeconds, 1000);
-	function thirtySeconds() {
+	clock = setInterval(seconds, 1000);
+	function seconds() {
 		if (counter === 0) {
 			clearInterval(clock);
 			timeOutLoss();
 		}
 		else if (counter > 0) {
 			counter--;
+            console.log('couter down');
 		}
 	$(".time-rem").html(counter);
 	}
@@ -63,7 +77,7 @@ function win() {
     $('#o2').html('');
     $('#o3').html('');
     $('#o4').html('');
-	setTimeout(wait, 3000);  //  change to 4000 or other amount
+	setTimeout(wait, 3000);  
 }
 
 function loss() {
@@ -75,18 +89,24 @@ function loss() {
     $('#o2').html('');
     $('#o3').html('');
     $('#o4').html('');
-	setTimeout(wait, 3000); //  change to 4000 or other amount
+	setTimeout(wait, 3000); 
 }
 	    
-function showQuestion() {
-	$('.time-rem').html(counter);
+function generateQuestion() {
+	$('.time-rem').html('20');
 	$(".status").html('');
 	$(".answer").html('');
+    $(".start").html('');
+    $(".start-over").html('');
+    $('#o1').html('<button type="button" class="btn btn-primary btn-block bo1">&nbsp;</button>');
+    $('#o2').html('<button type="button" class="btn btn-primary btn-block bo2">&nbsp;</button>');
+    $('#o3').html('<button type="button" class="btn btn-primary btn-block bo3">&nbsp;</button>');
+    $('#o4').html('<button type="button" class="btn btn-primary btn-block bo4">&nbsp;</button>');
     $('.question').html(triviaArray[questionCounter].question);
-    $('#o1').html(triviaArray[questionCounter].option1);
-    $('#o2').html(triviaArray[questionCounter].option2);
-    $('#o3').html(triviaArray[questionCounter].option3);
-    $('#o4').html(triviaArray[questionCounter].option4);	       
+    $('.bo1').html(triviaArray[questionCounter].option1);
+    $('.bo2').html(triviaArray[questionCounter].option2);
+    $('.bo3').html(triviaArray[questionCounter].option3);
+    $('.bo4').html(triviaArray[questionCounter].option4);	       
 }
 
 function timeOutLoss() {
@@ -103,15 +123,16 @@ function timeOutLoss() {
 
 function finalScreen() {
 
-	$('.time-rem').html('');
+	$('.time-rem').html(counter);
 	$(".status").html('CONGRATS, YOU HAVE REACHED THE END!');
 	$(".answer").html('');
     $('.question').html('');
     $('#o1').html('Correct Answers: ' + correctCnt);
     $('#o2').html('Incorrect Answers: ' + incorrectCnt);
     $('#o3').html('Unanswered: ' + unansweredCnt);
-    $('.start-over').html('<button type="button" class="btn btn-primary btn-block start-over">START OVER</button>');
-	       
+    $('#o4').html('');
+    $('.start-over').html('<button type="button" class="btn btn-primary btn-block">START OVER</button>');
+	audio.play();      
 }
 
 function resetGame() {
@@ -120,7 +141,7 @@ function resetGame() {
 	correctCnt = 0;
 	incorrectCnt = 0;
 	unansweredCnt = 0;
-	showQuestion();
+    generateQuestion();
 	timer();
 }
 
@@ -129,6 +150,8 @@ var counter = 20;
 var correctCnt = 0;
 var incorrectCnt = 0;
 var unansweredCnt = 0;
+var clock;
+var audio = new Audio('assets/images/theme.mp3');
 
 // game objects
 var triviaArray = [
@@ -369,6 +392,50 @@ var triviaArray = [
      option4: "BABU",
      answer:"o2",
      textAns: "ASSMAN"
+},
+{
+     questionNumber: 22,
+     img: "<img class='center-block img-right' src='assets/images/tomei.jpg' height='250' width='250'>",
+     question: "Which actress does George have a shot with until he blows it by admitting he's engaged?",
+     option1: "Helen Hunt",
+     option2: "Marissa Tomei",
+     option3: "Sarah Jessica Parker",
+     option4: "Winona Ryder",
+     answer:"o2",
+     textAns: "Marissa Tomei"
+},
+{
+     questionNumber: 23,
+     img: "<img class='center-block img-right' src='assets/images/mint.jpg' height='250' width='250'>",
+     question: "What candy does Kramer accidentally drop into a patient while watching an open room surgery?",
+     option1: "Skittles",
+     option2: "M&Ms",
+     option3: "Junior Mint",
+     option4: "Reese's Pieces",
+     answer:"o3",
+     textAns: "Junior Mint"
+},
+{
+     questionNumber: 24,
+     img: "<img class='center-block img-right' src='assets/images/mvb.jpg' height='250' width='250'>",
+     question: "For which U.S. president is there a gang named after?",
+     option1: "Teddy Roosevelt",
+     option2: "Martin Van Buren",
+     option3: "William Taft",
+     option4: "William McKinley",
+     answer:"o2",
+     textAns: "Martin Van Buren"
+},
+{
+     questionNumber: 25,
+     img: "<img class='center-block img-right' src='assets/images/cobb.jpg' height='250' width='250'>",
+     question: "What is the Maestro's real name?",
+     option1: "Bob Cobb",
+     option2: "Tim Whatley",
+     option3: "Lloyd Braun",
+     option4: "Jackie Chiles",
+     answer:"o1",
+     textAns: "Bob Cobb"
 }
 ];
 

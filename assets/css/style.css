@@ -7,21 +7,19 @@ body {
 
 div  {
 	margin: 0px;
-/*	border: solid black 1px;
-*/}
+}
 
 h1 {
 	text-align: center;
 	margin: 0px;
 }
 
-.left-image {
-	margin-top: 20px;
+.option {
+	margin: 5px;
 }
 
-.show-and-hide {
-    visibility: hidden;
-    padding: 10px;
+.left-image {
+	margin-top: 20px;
 }
 
 .jumbotron {
@@ -43,7 +41,7 @@ h1 {
 }
 
 .start {
-	margin-top: 100px;
+	margin-top: 70px;
 }
 
 .time-rem {
