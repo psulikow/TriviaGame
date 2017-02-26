@@ -41,7 +41,7 @@ $(document).ready(function(){
 }); //close
 
 function wait() {
-	if (questionCounter < 2) 
+	if (questionCounter < 24) 
 	{
 		questionCounter++;
 		generateQuestion();
@@ -223,14 +223,14 @@ var triviaArray = [
 },
 {
      questionNumber: 7,
-     img: "<img class='center-block img-right' src='assets/images/buck.png' height='250' width='250'>",
-     question: "If George were a porn star what did he say his name would be?",
-     option1: "Buck Naked",
-     option2: "Ron Jeremy",
-     option3: "Van Johnson",
-     option4: "Peter Dong",
+     img: "<img class='center-block img-right' src='assets/images/ball.jpg' height='250' width='250'>",
+     question: "What brand of golf ball is found in the whale's blowhole when George pretends to be a marine biologist?",
+     option1: "Titleist",
+     option2: "Wilson",
+     option3: "Callaway",
+     option4: "Nike",
      answer:"o1",
-     textAns: "Buck Naked"
+     textAns: "Titleist"
 },
 {
      questionNumber: 8,
