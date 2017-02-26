@@ -1,25 +1,32 @@
 body {
 	background: skyblue;
+	font-family: 'Baloo', cursive;
+	font-size: 200%;
+	text-align: center;
 }
 
 div  {
-	border: solid black 1px;
-}
+	margin: 0px;
+/*	border: solid black 1px;
+*/}
 
 h1 {
 	text-align: center;
 	margin: 0px;
 }
 
+.left-image {
+	margin-top: 20px;
+}
+
 .show-and-hide {
-     visibility: hidden;
-/*     background: rgba(0, 0, 255, 0.4);
-*/     padding: 10px;
+    visibility: hidden;
+    padding: 10px;
 }
 
 .jumbotron {
 	padding: 0px;
-	margin: 0px;
+	margin-top: 10px;
 	background: transparent;
 }
 .sein {
@@ -36,6 +43,9 @@ h1 {
 }
 
 .start {
-	margin-top: 150px;
+	margin-top: 100px;
 }
 
+.time-rem {
+	margin-top: 10px;
+}
