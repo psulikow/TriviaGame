@@ -1,0 +1,41 @@
+body {
+	background: skyblue;
+}
+
+div  {
+	border: solid black 1px;
+}
+
+h1 {
+	text-align: center;
+	margin: 0px;
+}
+
+.show-and-hide {
+     visibility: hidden;
+/*     background: rgba(0, 0, 255, 0.4);
+*/     padding: 10px;
+}
+
+.jumbotron {
+	padding: 0px;
+	margin: 0px;
+	background: transparent;
+}
+.sein {
+	width: 50%;
+	height: auto;
+}
+
+.body-row {
+	height:350px;
+}
+
+.action {
+	height:350px;
+}
+
+.start {
+	margin-top: 150px;
+}
+
