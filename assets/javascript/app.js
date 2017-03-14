@@ -3,7 +3,6 @@ $(document).ready(function(){
 
     function startUpScreen() {
     $('.start').html('<button type="button" class="btn btn-primary btn-block">START</button>');
-    audio.play();
     }
 
     startUpScreen();
@@ -11,16 +10,12 @@ $(document).ready(function(){
 
     $("body").on("click", ".start", function(event){
             // console.log('start clicked');
-            audio.pause();
-            audio.currentTime = 0;
 		    generateQuestion();
 		    timer();
     });
 
     $("body").on("click", ".start-over", function(event){
             // console.log('restart clicked');
-            audio.pause();
-            audio.currentTime = 0;
 		    resetGame();
     });
     
@@ -151,7 +146,6 @@ var correctCnt = 0;
 var incorrectCnt = 0;
 var unansweredCnt = 0;
 var clock;
-var audio = new Audio('assets/images/theme.mp3');
 
 // game objects
 var triviaArray = [
